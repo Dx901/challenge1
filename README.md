@@ -47,16 +47,16 @@ Some of the methods listed are provided to you in the starter code. You should c
 #### Author
 
 - `Author#initialize(name)`
-  - An author is initialized with a name, as a string.
+  - An author is initialized with a name, as a string.----done
   - A name **cannot** be changed after it is initialized.
-- `Author#name`
+- `Author#name` ----Done
   - Returns the name of the author
 
 #### Magazine
 
-- `Magazine#initialize(name, category)`
-  - A magazine is initialized with a name as a string and a category as a string
-  - The name and category of the magazine **can be** changed after being initialized.
+- `Magazine#initialize(name, category)`-----Done
+  - A magazine is initialized with a name as a string and a category as a string----DONE
+  - The name and category of the magazine **can be** changed after being initialized.---done
 - `Magazine#name`
   - Returns the name of this magazine
 - `Magazine#category`
@@ -67,7 +67,7 @@ Some of the methods listed are provided to you in the starter code. You should c
 #### Article
 
 - `Article#initialize(author, magazine, title)`
-  - An article is initialized with an author as an Author object, a magazine as a Magazine object, and title as a string.
+  - An article is initialized with an author as an Author object, a magazine as a Magazine object, and title as a string.--------Done
   - An article **cannot** change its author, magazine, or title after it is has been initialized.
 - `Article#title`
   - Returns the title for that given article
