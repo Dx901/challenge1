@@ -1,32 +1,47 @@
 class Magazine
    attr_accessor :name, :category
 
-   has_many :articles
-   has_many :authors, through: :articles
-
-
   def initialize(name, category)
     @name = name
     @category = category
+    @all << self
+  end
 
+  def self.all
+    @@all
+  end
+
+  def category
+    @category = category
+  end
+
+  def name
+    @name
+  end
+
+  def articles_magazines
+    Article.all.filter{|article| article.magazine==@name}
   end
 
   def magazine_contributors
-    puts "#{author_id}"
+    articles_magazines.map{|article|article.author}
+  end
+
+  def contributors
+    magazine_contributors.uniq
   end
 
 
   def article_titles
-    self.magazine.pluck(article.title)
+    # self.magazine.pluck(article.title)
+    articles_magazines.map{|article|article.title}
   end
 
   def contributing_authors
-    if author.articles > 2
-      return "#{author.name}"
-    else
-      puts "I think the author has one(1) article"
-    end
-
+    main_authors = []
+    magazine_contributors.tally.each {|key, value|
+    value>2 && (magazine_contributors << key)}
+    main_authors
   end
 
 

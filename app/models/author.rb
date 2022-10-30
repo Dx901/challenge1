@@ -1,37 +1,38 @@
 class Author 
-  attr_reader :name
+  attr_accessor :name
 
-  has_many :articles
-  has_many :magazines, through: :articles
-
-
-  def initialize(name)
+  
+  def initialize(name, category=[])
+    @category = category
     @name = name
   end
 
   def articles
-    return articles
+    # return articles
+    Article.all.filter {|article| article.author==@name}
+
   end
 
   def magazines
-    return "#{magazine_id}"
+    # return "#{magazine_id}"
+    Article.map {|article| article.magazine}.uniq
 
   end
 
 
   def add_article(magazine, title)
-    Article.create(title: title, magazine_id: magazine_id)
+    Article.create(self, title: title, magazine_id: magazine_id)
   end
 
   def topic_areas
-      self.author.articles(:articles)
+    @category.uniq
   end
 
-  def change 
-    create_table :authors do |t|
-      t.string :name
-    end
-  end
+  # def change 
+  #   create_table :authors do |t|
+  #     t.string :name
+  #   end
+  # end
 
 
 end
